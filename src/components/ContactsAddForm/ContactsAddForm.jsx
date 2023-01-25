@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { nanoid } from 'nanoid'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addContact } from 'redux/contacts.slice'
 
 import { Form, Label, ButtonAddContact } from './ContactsAddForm.styled'
@@ -10,6 +10,8 @@ export function ContactsAddForm() {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const dispatch = useDispatch();
+    const contacts = useSelector((state) => state.contacts.contacts)
+
 
     const onAddNewContact = event => {
         event.preventDefault()
@@ -18,7 +20,14 @@ export function ContactsAddForm() {
             name,
             number,
         };
-        dispatch(addContact(newContact));
+        const contactInList = contacts.map(contact => (
+            contact.name
+        ))
+        if (contactInList.includes(newContact.name)) {
+            alert(`${newContact.name} is already in contacts `)
+        } else {
+            dispatch(addContact(newContact));
+        }
         reset();
     };
 
