@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { nanoid } from 'nanoid'
 import { useDispatch } from 'react-redux'
-import { addContact } from '../../redux/contacts.slice'
+import { addContact } from 'redux/contacts.slice'
 
 import { Form, Label, ButtonAddContact } from './ContactsAddForm.styled'
 
@@ -26,7 +26,6 @@ export function ContactsAddForm() {
         setName('')
         setNumber('')
     }
-
 
     return (
         <Form onSubmit={onAddNewContact}>
