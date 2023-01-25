@@ -3,6 +3,6 @@ import { contactsSlice } from "../redux/contacts.slice"
 
 export const store = configureStore({
     reducer: {
-        contacts: contactsSlice.reducer
+        contacts: contactsSlice.reducer,
     }
 })

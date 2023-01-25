@@ -8,8 +8,11 @@ const initialState = {
 export const contactsSlice = createSlice({
     name: "contacts",
     initialState,
-    redusers: {
+    reducers: {
+        addContact: (state, action) => {
+            state.contacts.push(action.payload);
+        },
     }
 })
 
-// export const { } = contactsSlice.actions
+export const { addContact } = contactsSlice.actions;
